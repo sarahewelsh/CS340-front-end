@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>21st Century Blockbuster - Edit Customer</title>
+		<link rel="stylesheet" href="../user.css" type="text/css" />
+	</head>
+	<body>
+		<h2 id="title" style="text-align: center">Edit customer</h2>
+		<form style="text-align: left">
+			<fieldset>
+				<label
+					>First name (cannot be blank):
+					<input
+						type="text"
+						name="first_name"
+						size="30"
+						maxlength="100"
+						id="edit_first_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Last name (cannot be blank):
+					<input
+						type="text"
+						name="last_name"
+						size="30"
+						maxlength="100"
+						id="edit_last_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Email (cannot be blank):
+					<input
+						type="text"
+						name="email"
+						size="30"
+						maxlength="100"
+						id="edit_email"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Zip:
+					<input type="text" name="zip" size="30" maxlength="5" id="edit_zip" />
+				</label>
+				<br />
+			</fieldset>
+		</form>
+		<button id="edit">Submit changes</button>
+		<script src="edit.js"></script>
+	</body>
+</html>

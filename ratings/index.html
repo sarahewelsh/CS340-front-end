@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>21st Century Blockbuster - Ratings</title>
+		<link rel="stylesheet" href="../user.css" type="text/css" />
+	</head>
+
+	<body onload="getAllRatings()">
+		<h2 id="title" style="text-align: center">21st Century Blockbuster</h2>
+		<h2 id="title" style="text-align: center">Rating List</h2>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/index.html"
+			>Return to home page</a
+		>
+		<a
+			href="http://web.engr.oregonstate.edu/~welshsa/public/customers/index.html"
+			>Customers</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/items/index.html"
+			>Items</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/orders/index.html"
+			>Orders</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/genres/index.html"
+			>Genres</a
+		>
+		<br />
+		<form style="text-align: left">
+			<legend>Add rating:</legend>
+			<fieldset>
+				<label
+					>Rating name (cannot be blank):
+					<input
+						type="text"
+						name="rating_type"
+						size="30"
+						maxlength="100"
+						id="new_rating"
+						required
+					/>
+				</label>
+				<br />
+			</fieldset>
+		</form>
+		<button id="rating_add">Add rating</button>
+
+		<button id="rating_search">Search ratings</button>
+		<table id="ratings">
+			<th>ID</th>
+			<th>Rating</th>
+			<th>Edit rating</th>
+			<th>Delete rating</th>
+		</table>
+		<br />
+		<br />
+		<table id="searchRows">
+			<legend>Search results:</legend>
+			<th>ID</th>
+			<th>Rating</th>
+			<th>Edit rating</th>
+			<th>Delete rating</th>
+		</table>
+
+		<br />
+
+		<script src="rating.js"></script>
+	</body>
+</html>

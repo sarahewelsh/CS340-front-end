@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>21st Century Blockbuster - Customer List</title>
+		<link rel="stylesheet" href="../user.css" type="text/css" />
+	</head>
+
+	<body onload="getAllCustomers()">
+		<h2 id="title" style="text-align: center">21st Century Blockbuster</h2>
+		<h2 id="title" style="text-align: center">Customer List</h2>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/index.html"
+			>Return to home page</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/items/index.html"
+			>Items</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/orders/index.html"
+			>Orders</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/ratings/index.html"
+			>Ratings</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/genres/index.html"
+			>Genres</a
+		>
+		<br />
+		<form style="text-align: left">
+			<legend>Add/search customer:</legend>
+			<fieldset>
+				<label
+					>First name (cannot be blank if adding):
+					<input
+						type="text"
+						name="first_name"
+						size="30"
+						maxlength="100"
+						id="new_first_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Last name (cannot be blank if adding):
+					<input
+						type="text"
+						name="last_name"
+						size="30"
+						maxlength="100"
+						id="new_last_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Email (cannot be blank if adding, must be unique):
+					<input
+						type="text"
+						name="email"
+						size="30"
+						maxlength="100"
+						id="new_email"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Zip:
+					<input
+						type="text"
+						name="email"
+						size="30"
+						maxlength="100"
+						id="new_zip"
+					/>
+				</label>
+				<br />
+			</fieldset>
+		</form>
+		<button id="cust_add">Add customer</button>
+		<button id="cust_search">Search customer</button>
+		<table id="customers">
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Zip</th>
+			<th>Edit customer</th>
+			<th>Delete customer</th>
+		</table>
+		<br />
+		<br />
+
+		<table id="searchRows">
+			<legend>Search results:</legend>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Zip</th>
+			<th>Edit customer</th>
+			<th>Delete customer</th>
+		</table>
+
+		<br />
+
+		<script src="customer.js"></script>
+	</body>
+</html>

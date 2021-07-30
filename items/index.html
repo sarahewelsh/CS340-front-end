@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>21st Century Blockbuster - Items</title>
+		<link rel="stylesheet" href="../user.css" type="text/css" />
+	</head>
+
+	<body onload="getAllItems()">
+		<h2 id="title" style="text-align: center">21st Century Blockbuster</h2>
+		<h2 id="title" style="text-align: center">Item List</h2>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/index.html"
+			>Return to home page</a
+		>
+		<a
+			href="http://web.engr.oregonstate.edu/~welshsa/public/customers/index.html"
+			>Customers</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/orders/index.html"
+			>Orders</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/ratings/index.html"
+			>Ratings</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/genres/index.html"
+			>Genres</a
+		>
+		<br />
+
+		<form style="text-align: left">
+			<legend>Add/search item:</legend>
+			<fieldset>
+				<label
+					>Item name (cannot be blank if adding):
+					<input
+						type="text"
+						name="item_name"
+						size="30"
+						maxlength="100"
+						id="new_item_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Rating (cannot be blank if adding):
+					<input
+						type="text"
+						name="rating"
+						size="30"
+						maxlength="100"
+						id="new_item_rating"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Genre (cannot be blank if adding):
+					<input
+						type="text"
+						name="email"
+						size="30"
+						maxlength="100"
+						id="new_item_genre"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Type:
+					<input
+						type="text"
+						name="email"
+						size="30"
+						maxlength="100"
+						id="new_item_type"
+					/>
+				</label>
+				<br />
+				<label
+					>Cost:
+					<input
+						type="text"
+						name="cost"
+						size="30"
+						maxlength="100"
+						id="new_item_cost"
+					/>
+				</label>
+			</fieldset>
+		</form>
+		<button id="item_add">Add item</button>
+		<button id="item_search">Search item</button>
+
+		<table id="items">
+			<th>ID</th>
+			<th>Item Name</th>
+			<th>Rating</th>
+			<th>Genre</th>
+			<th>Type</th>
+			<th>Cost</th>
+			<th>Edit item</th>
+			<th>Delete item</th>
+		</table>
+		<br />
+		<br />
+		<table id="searchRows">
+			<legend>Search results:</legend>
+			<th>ID</th>
+			<th>Item Name</th>
+			<th>Rating</th>
+			<th>Genre</th>
+			<th>Type</th>
+			<th>Cost</th>
+			<th>Edit item</th>
+			<th>Delete item</th>
+		</table>
+
+		<br />
+		<script src="item.js"></script>
+	</body>
+</html>

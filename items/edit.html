@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>21st Century Blockbuster - Edit Item</title>
+		<link rel="stylesheet" href="../user.css" type="text/css" />
+	</head>
+	<body>
+		<h2 id="title" style="text-align: center">Edit items</h2>
+		<form style="text-align: left">
+			<fieldset>
+				<label
+					>Item name (cannot be blank if adding):
+					<input
+						type="text"
+						name="name"
+						size="30"
+						maxlength="100"
+						id="edit_item_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Rating (cannot be blank if adding):
+					<input
+						type="text"
+						name="rating"
+						size="30"
+						maxlength="100"
+						id="edit_item_rating"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Genre (cannot be blank if adding):
+					<input
+						type="text"
+						name="genre"
+						size="30"
+						maxlength="100"
+						id="edit_item_genre"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Cost:
+					<input
+						type="text"
+						name="cost"
+						size="30"
+						maxlength="100"
+						id="edit_item_cost"
+					/>
+				</label>
+				<br />
+				<label
+					>Type:
+					<input
+						type="text"
+						name="type"
+						size="30"
+						maxlength="100"
+						id="edit_item_type"
+					/>
+				</label>
+				<br />
+			</fieldset>
+		</form>
+		<button id="edit">Submit changes</button>
+		<script src="edit.js"></script>
+	</body>
+</html>

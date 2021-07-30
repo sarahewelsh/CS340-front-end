@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>21st Century Blockbuster - Genres</title>
+		<link rel="stylesheet" href="../user.css" type="text/css" />
+	</head>
+
+	<body onload="getAllGenres()">
+		<h2 id="title" style="text-align: center">21st Century Blockbuster</h2>
+		<h2 id="title" style="text-align: center">Genre List</h2>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/index.html"
+			>Return to home page</a
+		>
+		<a
+			href="http://web.engr.oregonstate.edu/~welshsa/public/customers/index.html"
+			>Customers</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/items/index.html"
+			>Items</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/orders/index.html"
+			>Orders</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/ratings/index.html"
+			>Ratings</a
+		>
+
+		<br />
+
+		<form style="text-align: left">
+			<legend>Add genre:</legend>
+			<fieldset>
+				<label
+					>Genre name (cannot be blank):
+					<input
+						type="text"
+						name="genre_type"
+						size="30"
+						maxlength="100"
+						id="new_genre"
+						required
+					/>
+				</label>
+				<br />
+			</fieldset>
+		</form>
+		<button id="genre_add">Add genre</button>
+
+		<button id="genre_search">Search genres</button>
+		<table id="genres">
+			<th>ID</th>
+			<th>Genre</th>
+			<th>Edit genre</th>
+			<th>Delete genre</th>
+		</table>
+		<br />
+		<br />
+		<table id="searchRows">
+			<legend>Search results:</legend>
+			<th>ID</th>
+			<th>Genre</th>
+			<th>Edit genre</th>
+			<th>Delete genre</th>
+		</table>
+
+		<br />
+
+		<script src="genre.js"></script>
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>21st Century Blockbuster</title>
+		<link rel="stylesheet" href="../user.css" type="text/css" />
+	</head>
+
+	<body onload="getAllOrders()">
+		<h2 id="title" style="text-align: center">21st Century Blockbuster</h2>
+		<h2 id="title" style="text-align: center">Orders</h2>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/index.html"
+			>Return to home page</a
+		>
+		<a
+			href="http://web.engr.oregonstate.edu/~welshsa/public/customers/index.html"
+			>Customers</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/items/index.html"
+			>Items</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/ratings/index.html"
+			>Ratings</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/genres/index.html"
+			>Genres</a
+		>
+		<br />
+
+		<br />
+		<form style="text-align: left">
+			<legend>Search for order:</legend>
+			<fieldset>
+				<label
+					>Customer first/last name or email required
+					<br />
+					<br />
+					Customer first name:
+					<input
+						type="text"
+						name="first_name"
+						size="30"
+						maxlength="100"
+						id="cust_first_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Customer last name:
+					<input
+						type="text"
+						name="last_name"
+						size="30"
+						maxlength="100"
+						id="cust_last_name"
+						required
+					/>
+				</label>
+				<br />
+				<label
+					>Customer email:
+					<input
+						type="text"
+						name="email"
+						size="30"
+						maxlength="100"
+						id="cust_email"
+					/>
+				</label>
+				<br />
+			</fieldset>
+		</form>
+		<br />
+		<button id="order_name_search">Search orders by customer name</button>
+		<button id="order_email_search">Search orders by customer email</button>
+		<br />
+		<table id="searchRows">
+			<th>Order ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Order Total</th>
+			<th>Edit/view order</th>
+			<th>Delete order</th>
+		</table>
+		<br />
+		<br />
+
+		<table id="orders">
+			<legend>Existing orders:</legend>
+
+			<th>Order ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Order Total</th>
+			<th>Edit/view order</th>
+			<th>Delete order</th>
+		</table>
+
+		<br />
+		<br />
+
+		<script src="order.js"></script>
+	</body>
+</html>
