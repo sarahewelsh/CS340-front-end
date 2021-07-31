@@ -56,7 +56,7 @@ function addRow(addedVals) {
 
 	// Add functionality to edit button
 	newRow.lastChild.addEventListener("click", function (event) {
-		window.location.href = "edit_orders.html?id=" + addedVals["order_id"];
+		window.location.href = "edit.html?id=" + addedVals["order_id"];
 	});
 
 	newRow.insertCell().innerHTML =
@@ -242,7 +242,7 @@ function addSearchRow(addedVals) {
 		"<button input type='button' class='edit' id='" +
 		addedVals.id +
 		"' value='Edit row'>" +
-		"Edit order" +
+		"Edit/view order" +
 		"</button>";
 
 	// Add functionality to edit button
