@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", bindAllButtons);
 
 function bindAllButtons() {
-	bindAddButtons();
+	// bindAddButtons();
 	bindSearchButtonsName();
 	bindSearchButtonsEmail();
 }
@@ -105,64 +105,64 @@ function addRow(addedVals) {
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 // Submit changes
-function bindAddButtons() {
-	document
-		.getElementById("order_add")
-		.addEventListener("click", function (event) {
-			console.log("here");
-			// Get new values from form
-			var new_vals = {
-				firstName: document.getElementById("cust_first_name").value,
-				lastName: document.getElementById("cust_last_name").value,
-				email: document.getElementById("cust_email").value,
-			};
-			console.log(new_vals);
-
-			var addreq = new XMLHttpRequest();
-
-			addreq.onreadystatechange = function () {
-				// Redirect when the state changes.
-				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-					console.log("add success");
-					let parsedResult = JSON.parse(addreq.responseText);
-					console.log(parsedResult);
-					const newOrderID = parsedResult.insertID;
-					console.log(newOrderID);
-					var checkreq = new XMLHttpRequest();
-					checkreq.open(
-						"GET",
-						"http://flip1.engr.oregonstate.edu:8687/orders" + newOrderID,
-						true
-					);
-
-					checkreq.setRequestHeader("Content-Type", "application/json");
-					checkreq.onreadystatechange = function () {
-						// Call a function when the state changes.
-						if (
-							this.readyState === XMLHttpRequest.DONE &&
-							this.status === 200
-						) {
-							console.log("success");
-							// window.location.href = "edit.html?id=" + addedVals["order_id"];
-						}
-					};
-
-					checkreq.send(JSON.stringify(new_vals));
-				}
-				// window.location.href = "edit.html?id=" + new_vals["order_id"];
-			};
-			addreq.open(
-				"POST",
-				"http://flip1.engr.oregonstate.edu:8687/orders/new/",
-				true
-			);
-
-			addreq.setRequestHeader("Content-Type", "application/json");
-			addreq.send(JSON.stringify(new_vals));
-
-			event.preventDefault();
-		});
-}
+// function bindAddButtons() {
+// 	document
+// 		.getElementById("order_add")
+// 		.addEventListener("click", function (event) {
+// 			console.log("here");
+// 			// Get new values from form
+// 			var new_vals = {
+// 				firstName: document.getElementById("cust_first_name").value,
+// 				lastName: document.getElementById("cust_last_name").value,
+// 				email: document.getElementById("cust_email").value,
+// 			};
+// 			console.log(new_vals);
+//
+// 			var addreq = new XMLHttpRequest();
+//
+// 			addreq.onreadystatechange = function () {
+// 				// Redirect when the state changes.
+// 				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+// 					console.log("add success");
+// 					let parsedResult = JSON.parse(addreq.responseText);
+// 					console.log(parsedResult);
+// 					const newOrderID = parsedResult.insertID;
+// 					console.log(newOrderID);
+// 					var checkreq = new XMLHttpRequest();
+// 					checkreq.open(
+// 						"GET",
+// 						"http://flip1.engr.oregonstate.edu:8687/orders" + newOrderID,
+// 						true
+// 					);
+//
+// 					checkreq.setRequestHeader("Content-Type", "application/json");
+// 					checkreq.onreadystatechange = function () {
+// 						// Call a function when the state changes.
+// 						if (
+// 							this.readyState === XMLHttpRequest.DONE &&
+// 							this.status === 200
+// 						) {
+// 							console.log("success");
+// 							// window.location.href = "edit.html?id=" + addedVals["order_id"];
+// 						}
+// 					};
+//
+// 					checkreq.send(JSON.stringify(new_vals));
+// 				}
+// 				// window.location.href = "edit.html?id=" + new_vals["order_id"];
+// 			};
+// 			addreq.open(
+// 				"POST",
+// 				"http://flip1.engr.oregonstate.edu:8687/orders/new/",
+// 				true
+// 			);
+//
+// 			addreq.setRequestHeader("Content-Type", "application/json");
+// 			addreq.send(JSON.stringify(new_vals));
+//
+// 			event.preventDefault();
+// 		});
+// }
 
 // function bindAddButtonsEmail() {
 // 	document
@@ -247,7 +247,7 @@ function addSearchRow(addedVals) {
 
 	// Add functionality to edit button
 	newRow.lastChild.addEventListener("click", function (event) {
-		window.location.href = "edit_orders.html?id=" + addedVals["order_id"];
+		window.location.href = "edit.html?id=" + addedVals["order_id"];
 	});
 
 	newRow.insertCell().innerHTML =
@@ -349,7 +349,7 @@ function bindSearchButtonsEmail() {
 			console.log("work damn you");
 			// Get search values from form
 			var email = document.getElementById("cust_email").value;
-
+			console.log(email);
 			var addreq = new XMLHttpRequest();
 
 			addreq.open(
@@ -358,7 +358,6 @@ function bindSearchButtonsEmail() {
 				true
 			);
 
-			addreq.setRequestHeader("Content-Type", "application/json");
 			addreq.onreadystatechange = function () {
 				// Call a function when the state changes.
 				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
@@ -379,6 +378,7 @@ function bindSearchButtonsEmail() {
 					}
 				}
 			};
+			addreq.setRequestHeader("Content-Type", "application/json");
 			addreq.send(null);
 
 			event.preventDefault();

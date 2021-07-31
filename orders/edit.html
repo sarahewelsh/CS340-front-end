@@ -1,20 +1,25 @@
 <html>
 	<head>
-		<title>21st Century Blockbuster - Edit Order</title>
+		<meta charset="UTF-8" />
+		<title>21st Century Blockbuster</title>
 		<link rel="stylesheet" href="../user.css" type="text/css" />
 	</head>
-	<body onload="getSpecificOrder()">
-		<h2 id="title" style="text-align: center">Search for items</h2>
+
+	<body onload="getSpecificOrderItems()">
+		<h2 id="title" style="text-align: center">21st Century Blockbuster</h2>
+		<h2 id="title" style="text-align: center">Edit order</h2>
 		<form style="text-align: left">
+			<legend>Search items:</legend>
 			<fieldset>
-				<label
-					>Item name:
+				<label>
+					<br />
+					Item name:
 					<input
 						type="text"
-						name="first_name"
+						name="add_item_name"
 						size="30"
 						maxlength="100"
-						id="search_item_name"
+						id="add_item_name"
 					/>
 				</label>
 				<br />
@@ -22,10 +27,10 @@
 					>Rating:
 					<input
 						type="text"
-						name="last_name"
+						name="rating"
 						size="30"
 						maxlength="100"
-						id="search_item_rating"
+						id="add_rating"
 					/>
 				</label>
 				<br />
@@ -33,27 +38,51 @@
 					>Genre:
 					<input
 						type="text"
-						name="last_name"
+						name="genre"
 						size="30"
 						maxlength="100"
-						id="search_item_genre"
+						id="add_genre"
 					/>
 				</label>
 				<br />
 			</fieldset>
 		</form>
-		<button id="edit">Search for item</button>
+		<button id="item_search">Find items</button>
 		<br />
-		<br />
-		<h2 id="title" style="text-align: center">Items in current order</h2>
-		<table id="curr_order">
-			<th>Order ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Delete item</th>
+
+		<table id="item_results">
+			<label>Search results:</label>
+			<th>ID</th>
+			<th>Item name</th>
+			<th>Rating</th>
+			<th>Genre</th>
+			<th>Type</th>
+			<th>Cost</th>
+			<th>Add item</th>
 		</table>
 		<br />
-		<!--  -->
+		<br />
+
+		<table id="order_contents">
+			<label>Current order contents:</label>
+			<th>ID</th>
+			<th>Item name</th>
+			<th>Rating</th>
+			<th>Genre</th>
+			<th>Type</th>
+			<th>Cost</th>
+			<th>Delete item</th>
+		</table>
+
+		<br />
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/index.html"
+			>Return to home page</a
+		>
+		<a href="http://web.engr.oregonstate.edu/~welshsa/public/orders/index.html"
+			>Return to Orders</a
+		>
+
+		<br />
 		<script src="edit.js"></script>
 	</body>
 </html>
