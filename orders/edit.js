@@ -154,9 +154,7 @@ function addContentsRow(addedVals) {
 		"Delete item" +
 		"</button>";
 
-	console.log(addedVals.item_id);
-
-	console.log(addedVals["item_id"]);
+	console.log(addedVals);
 
 	console.log(
 		"http://flip1.engr.oregonstate.edu:8687/items/" + addedVals["item_id"]
@@ -180,6 +178,8 @@ function addContentsRow(addedVals) {
 		req.open(
 			"DELETE",
 			"http://flip1.engr.oregonstate.edu:8687/orders/items/" +
+				id +
+				"/" +
 				addedVals["item_id"],
 			true
 		);
