@@ -1,17 +1,19 @@
 tbody th {
-	font-weight: normal;
+	font-weight: bold;
 }
 
 body {
 	padding: 5px;
 	text-align: center;
 	font-family: -apple-system, sans-serif;
+	background-image: url("background2.png");
+	background-color: lightgray;
 }
 
 table {
 	width: 100%;
 	margin: 5px auto;
-	table-layout: fixed;
+	table-layout: auto;
 }
 
 table,
@@ -25,7 +27,13 @@ td {
 	padding: 5px;
 	border: solid 1px;
 	text-align: left;
+	width: auto;
 }
+
+/* th.fitwidth {
+	width: 1px;
+	white-space: nowrap;
+} */
 
 #workouts tr > *:nth-child(1) {
 	display: none;

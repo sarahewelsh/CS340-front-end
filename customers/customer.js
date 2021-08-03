@@ -46,6 +46,7 @@ function addRow(addedVals) {
 		hackCounter++;
 	}
 
+	// Add edit customer button -------
 	newRow.insertCell().innerHTML =
 		"<button input type='button' class='edit' id='" +
 		addedVals.id +
@@ -53,21 +54,18 @@ function addRow(addedVals) {
 		"Edit customer" +
 		"</button>";
 
-	// Add functionality to edit button
+	// Add functionality to edit button -------
 	newRow.lastChild.addEventListener("click", function (event) {
 		window.location.href = "edit.html?id=" + addedVals["customer_id"];
 	});
 
+	// Add delete customer button
 	newRow.insertCell().innerHTML =
 		"<button input type='button' class='delete' id='" +
 		addedVals.id +
 		"' value='Delete row'>" +
 		"Delete customer" +
 		"</button>";
-
-	console.log(addedVals.customer_id);
-
-	console.log(addedVals["customer_id"]);
 
 	console.log(
 		"http://flip1.engr.oregonstate.edu:8687/customers/" +
@@ -90,8 +88,45 @@ function addRow(addedVals) {
 
 		req.open(
 			"DELETE",
-			"http://flip1.engr.oregonstate.edu:8687/ratings/" +
-				addedVals["rating_id"],
+			"http://flip1.engr.oregonstate.edu:8687/customers/" +
+				addedVals["customer_id"],
+			true
+		);
+		req.setRequestHeader("Content-Type", "application/json");
+		req.send(null);
+		console.log(req.responseText);
+
+		event.preventDefault();
+	});
+
+	// Add new order button ------
+	newRow.insertCell().innerHTML =
+		"<button input type='button' class='add' id='" +
+		addedVals.id +
+		"' value='Add row'>" +
+		"Start new order" +
+		"</button>";
+
+	// Add functionality to add button
+	newRow.lastChild.addEventListener("click", function (event) {
+		var req = new XMLHttpRequest();
+
+		// Send create order request to database
+		req.addEventListener("load", function () {
+			if (req.status >= 200 && req.status < 400) {
+				console.log("success");
+
+				// If new order creation was successful, redirect to edit order page
+				window.location.href =
+					"http://web.engr.oregonstate.edu/~welshsa/public/orders/index.html?id=" +
+					addedVals["order_id"];
+			}
+		});
+
+		req.open(
+			"GET",
+			"http://flip1.engr.oregonstate.edu:8687/orders/new/" +
+				addedVals["customer_id"],
 			true
 		);
 		req.setRequestHeader("Content-Type", "application/json");
@@ -101,41 +136,6 @@ function addRow(addedVals) {
 		event.preventDefault();
 	});
 }
-
-// Add new order button
-newRow.insertCell().innerHTML =
-	"<button input type='button' class='order' id='" +
-	addedVals.id +
-	"' value='Start Order row'>" +
-	"Start order" +
-	"</button>";
-
-// Add functionality to add order button
-newRow.lastChild.addEventListener("click", function (event) {
-	var req = new XMLHttpRequest();
-
-	// Send new order request to database
-	req.addEventListener("load", function () {
-		if (req.status >= 200 && req.status < 400) {
-			console.log("success");
-
-			// If order creation in database was successful, redirect to edit order page
-			window.location.href = "edit.html?id=" + new_vals["order_id"];
-		}
-	});
-
-	req.open(
-		"DELETE",
-		"http://flip1.engr.oregonstate.edu:8687/customers/" +
-			addedVals["customer_id"],
-		true
-	);
-	req.setRequestHeader("Content-Type", "application/json");
-	req.send(null);
-	console.log(req.responseText);
-
-	event.preventDefault();
-});
 
 // Get id parameter from URL
 const params = new URLSearchParams(window.location.search);
@@ -324,6 +324,43 @@ function addSearchRow(addedVals) {
 
 		event.preventDefault();
 	});
+
+	// Add new order button ------
+	newRow.insertCell().innerHTML =
+		"<button input type='button' class='add' id='" +
+		addedVals.id +
+		"' value='Add row'>" +
+		"Start new order" +
+		"</button>";
+
+	// Add functionality to add button
+	newRow.lastChild.addEventListener("click", function (event) {
+		var req = new XMLHttpRequest();
+
+		// Send create order request to database
+		req.addEventListener("load", function () {
+			if (req.status >= 200 && req.status < 400) {
+				console.log("success");
+
+				// If new order creation was successful, redirect to edit order page
+				window.location.href =
+					"http://web.engr.oregonstate.edu/~welshsa/public/orders/index.html?id=" +
+					addedVals["order_id"];
+			}
+		});
+
+		req.open(
+			"GET",
+			"http://flip1.engr.oregonstate.edu:8687/orders/new/" +
+				addedVals["customer_id"],
+			true
+		);
+		req.setRequestHeader("Content-Type", "application/json");
+		req.send(null);
+		console.log(req.responseText);
+
+		event.preventDefault();
+	});
 }
 
 // Submit search
@@ -340,7 +377,7 @@ function bindSearchButtons() {
 
 			var addreq = new XMLHttpRequest();
 
-			if (firstName != null && lastName != null) {
+			if (firstName !== "" && lastName !== "") {
 				addreq.open(
 					"GET",
 					"http://flip1.engr.oregonstate.edu:8687/customers/name/" +
@@ -349,7 +386,7 @@ function bindSearchButtons() {
 						lastName,
 					true
 				);
-			} else if (email != null) {
+			} else if (email !== "") {
 				addreq.open(
 					"GET",
 					"http://flip1.engr.oregonstate.edu:8687/customers/email/" + email,
