@@ -32,7 +32,6 @@ function getAllItems() {
 	httpRequest.send();
 }
 
-// Get current rating_types for drop down menu
 function addRatingOptions() {
 	addSelectOptions(
 		"new_rating_type",
@@ -45,7 +44,6 @@ function addRatingOptions() {
 	);
 }
 
-// Get current genre_types for dropdown menu
 function addGenreOptions() {
 	addSelectOptions(
 		"new_genre_type",
@@ -61,13 +59,24 @@ function addGenreOptions() {
 function addSelectOptions(id, type, url, nullObject) {
 	var httpRequest = new XMLHttpRequest();
 
+	console.log(id);
+
+	console.log(type);
+
+	console.log(url);
+
 	// Do stuff with the response
 	httpRequest.onreadystatechange = function () {
 		console.log(type + " body");
 		if (httpRequest.readyState === XMLHttpRequest.DONE) {
+			console.log("yes");
+			console.log(httpRequest.response);
 			const body = JSON.parse(httpRequest.response);
 			body.reverse();
+
 			body.unshift(nullObject);
+			console.log(type + "JSON body");
+			console.log(body);
 
 			var select = document.getElementById(id);
 
@@ -76,6 +85,9 @@ function addSelectOptions(id, type, url, nullObject) {
 			}
 		} else {
 			console.log("no");
+			console.log("response");
+			console.log(url);
+			console.log(httpRequest.response);
 		}
 	};
 	httpRequest.open("GET", url, true);
@@ -88,22 +100,22 @@ function addSelectOption(node, optionName) {
 	node.add(option, 0);
 }
 
-// Add new row when item is added
 function addRow(addedVals) {
+	console.log(addedVals);
 
 	// Get new values from html table
 	var table = document.getElementById("items");
 	// Add a new row to the end of the table
 	var newRow = table.insertRow(table.rows.length);
 
-	var hackCounter = 0; 
+	var hackCounter = 0; // DO NOT DO THIS; THIS IS BAD AND I SHOULD FEEL BAD.
 	for (const [key, value] of Object.entries(addedVals)) {
+		console.log(`${key}: ${value}`);
 		var newCell = newRow.insertCell(hackCounter);
 		newCell.innerText = value;
 		hackCounter++;
 	}
 
-	// Add edit button 
 	newRow.insertCell().innerHTML =
 		"<button input type='button' class='edit' id='" +
 		addedVals.id +
@@ -116,13 +128,19 @@ function addRow(addedVals) {
 		window.location.href = "edit.html?id=" + addedVals["item_id"];
 	});
 
-	// Add delete button
 	newRow.insertCell().innerHTML =
 		"<button input type='button' class='delete' id='" +
 		addedVals.id +
 		"' value='Delete row'>" +
 		"Delete item" +
 		"</button>";
+
+	console.log(addedVals.item_id);
+
+	console.log(addedVals["item_id"]);
+
+	console.log(
+		"http://flip1.engr.oregonstate.edu:8687/items/" + addedVals["item_id"]
 	);
 
 	// Add functionality to delete button
@@ -146,6 +164,8 @@ function addRow(addedVals) {
 		);
 		req.setRequestHeader("Content-Type", "application/json");
 		req.send(null);
+		console.log(req.responseText);
+
 		event.preventDefault();
 	});
 }
@@ -170,13 +190,16 @@ function bindAddButtons() {
 				type: document.getElementById("new_item_type").value,
 				cost: document.getElementById("new_item_cost").value,
 			};
+			console.log(new_vals);
 
 			var addreq = new XMLHttpRequest();
 
 			addreq.onreadystatechange = function () {
 				// Call a function when the state changes.
 				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+					console.log("add_success");
 					let parsedResult = JSON.parse(addreq.responseText);
+					console.log(parsedResult);
 					const newRowID = parsedResult.insertId;
 
 					var checkreq = new XMLHttpRequest();
@@ -217,6 +240,7 @@ function bindAddButtons() {
 }
 
 function addSearchRow(addedVals) {
+	console.log(addedVals);
 
 	// Get new values from html table
 	var table = document.getElementById("searchRows");
@@ -225,6 +249,7 @@ function addSearchRow(addedVals) {
 
 	var hackCounter = 0; // DO NOT DO THIS; THIS IS BAD AND I SHOULD FEEL BAD.
 	for (const [key, value] of Object.entries(addedVals)) {
+		console.log(`${key}: ${value}`);
 		var newCell = newRow.insertCell(hackCounter);
 		newCell.innerText = value;
 		hackCounter++;
@@ -248,6 +273,13 @@ function addSearchRow(addedVals) {
 		"' value='Delete row'>" +
 		"Delete item" +
 		"</button>";
+
+	console.log(addedVals.item_id);
+
+	console.log(addedVals["item_id"]);
+
+	console.log(
+		"http://flip1.engr.oregonstate.edu:8687/items/" + addedVals["item_id"]
 	);
 
 	// Add functionality to delete button
@@ -272,6 +304,8 @@ function addSearchRow(addedVals) {
 		);
 		req.setRequestHeader("Content-Type", "application/json");
 		req.send(null);
+		console.log(req.responseText);
+
 		event.preventDefault();
 	});
 }
@@ -281,6 +315,7 @@ function bindSearchButtons() {
 	document
 		.getElementById("item_search")
 		.addEventListener("click", function (event) {
+			console.log("work damn you");
 			// Get search values from form
 			var ratingThing = document.getElementById("new_rating_type");
 			var genreThing = document.getElementById("new_genre_type");
@@ -291,6 +326,9 @@ function bindSearchButtons() {
 			var type = document.getElementById("new_item_type").value;
 			var cost = document.getElementById("new_item_cost").value;
 
+			console.log(name);
+			console.log(rating);
+			console.log(genre);
 			var addreq = new XMLHttpRequest();
 
 			if (name !== "") {
@@ -319,7 +357,10 @@ function bindSearchButtons() {
 			addreq.onreadystatechange = function () {
 				// Call a function when the state changes.
 				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+					console.log("yes");
+					console.log(addreq.response);
 					const body = JSON.parse(addreq.response);
+					console.log(body);
 					// Delete stuff
 					var tableHeaderRowCount = 1;
 					var table = document.getElementById("searchRows");
